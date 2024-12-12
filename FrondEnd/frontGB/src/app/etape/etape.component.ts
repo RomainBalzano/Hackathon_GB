@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-etape',
   standalone: true,
-  imports: [StepperComponent, SelectionComponent,HttpClientModule],
+  imports: [StepperComponent, SelectionComponent, HttpClientModule],
   templateUrl: './etape.component.html',
   styleUrl: './etape.component.css',
 })
@@ -26,10 +26,11 @@ export class EtapeComponent {
     'original-3993be19e330359a36fe1c51df745f25.jpg',
   ];
 
-  images_theme = ['booking_231_floatingtabbar_withmenu@2x.webp'];
+  images_theme = [''];
 
   images_nav = ['logo.png'];
 
+  // image à afficher en fonction des steps
   step_images = [
     { images: this.images_moodboard, preview: false },
     { images: this.images_theme, preview: true },
@@ -37,6 +38,8 @@ export class EtapeComponent {
   ];
 
   current_step = 0;
+
+  images_selected = new Array();
 
   constructor(private pathService: PathService) {}
 
@@ -49,19 +52,36 @@ export class EtapeComponent {
       this.steps[this.current_step].current = true;
 
       // Envoyer les chemins des images moodboard si c'est le premier step
-      if (this.current_step === 1) {
-        this.sendMoodboardPaths();
-      }
+      // if (this.current_step === 1) {
+      //   this.sendMoodboardPaths();
+      // }
     }
   }
 
   sendMoodboardPaths() {
-    this.pathService.sendPaths(this.images_moodboard).subscribe(
+    console.log('images selected');
+    console.log(this.images_selected);
+    this.pathService.sendPaths(this.images_selected).subscribe(
       (response) => {
-        console.log('Réponse du serveur Flask :', response);
+        console.log('Réponse du serveur Flask :', response.data.paths);
+        this.step_images[1].images = response.data.paths;
+        this.images_selected = [];
       },
       (error) => {
-        console.error('Erreur lors de l\'envoi des données :', error);
+        console.error("Erreur lors de l'envoi des données :", error);
+      }
+    );
+  }
+
+  sendUserChoicePaths() {
+    console.log('dans user choice');
+    this.pathService.sendPaths(this.images_selected).subscribe(
+      (response) => {
+        console.log('Réponse du serveur Flask :', response.data.paths);
+        // this.step_images[1].images = response.data.paths;
+      },
+      (error) => {
+        console.error("Erreur lors de l'envoi des données :", error);
       }
     );
   }

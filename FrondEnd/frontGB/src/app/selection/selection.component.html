@@ -4,15 +4,18 @@
     @for (img of images; track img) {
     <app-card
       [image]="img"
-      (click)="changePreview(img)"
-      class="hover:cursor-pointer"
+      (click)="onClick(img)"
+      class="hover:cursor-pointer m-1 border-2 {{
+        isSelected(img) ? ' border-primary-500' : 'border-transparent'
+      }}"
     ></app-card>
     }
   </div>
+  <div>{{ selectedImg }}</div>
   <!-- preview -->
   @if(preview){
   <div>
-    <app-card [image]="current_image"></app-card>
+    <app-card [image]="selectedImg[selectedImg.length - 1]"></app-card>
   </div>
   }
 </div>
