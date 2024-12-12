@@ -1,0 +1,18 @@
+<div class="flex">
+  <!-- Proposition -->
+  <div class="flex justify-center w-full justify-around">
+    @for (img of images; track img) {
+    <app-card
+      [image]="img"
+      (click)="changePreview(img)"
+      class="hover:cursor-pointer"
+    ></app-card>
+    }
+  </div>
+  <!-- preview -->
+  @if(preview){
+  <div>
+    <app-card [image]="current_image"></app-card>
+  </div>
+  }
+</div>
