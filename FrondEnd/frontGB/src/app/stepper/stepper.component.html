@@ -1,11 +1,11 @@
-<div class="flex items-end max-w-screen-lg mx-auto w-5/6">
+<div class="flex items-end max-w-screen-lg mx-auto">
   @for (step of steps; track step; let last = $last) {
   <div class="{{ last ? '' : 'w-full' }}">
     <!-- Step title -->
     <h6
       class="text-sm font-bold mb-2 {{
         step.current || step.done ? 'text-primary-500' : 'text-gray-500'
-      }} {{ last ? 'mr-4' : '' }}"
+      }}"
     >
       {{ step.title }}
     </h6>
