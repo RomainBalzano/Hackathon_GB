@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 
 @Component({
@@ -9,14 +9,39 @@ import { CardComponent } from '../card/card.component';
   styleUrl: './selection.component.css',
 })
 export class SelectionComponent {
-  changePreview(img: string) {
-    this.current_image = img;
-  }
-  // path de l'image actuelle
-  current_image = '';
+  // image pour preview
+  // current_image = '';
 
-  preview = false;
+  // images sélectionnées
+  @Input() selectedImg = [''];
+  @Output() selectedImgChange = new EventEmitter<string[]>();
 
-  // liste des images
+  @Input() preview = false;
+  // @Input() valid = false;
+
+  // liste des images à afficher
   @Input() images = [''];
+
+  // @Output() addItemEvent = new EventEmitter<string[]>();
+
+  // addItem() {
+  //   this.addItemEvent.emit(img);
+  // }
+
+  isSelected(img: string): boolean {
+    return this.selectedImg.includes(img);
+  }
+
+  onClick(img: string) {
+    // this.current_image = img;
+    let index = this.selectedImg.indexOf(img);
+    // si img pas sélectionnée
+    if (index == -1) {
+      this.selectedImg.push(img);
+    } else {
+      this.selectedImg.splice(index, 1);
+    }
+    // console.log(this.selectedImg);
+    this.selectedImgChange.emit(this.selectedImg);
+  }
 }

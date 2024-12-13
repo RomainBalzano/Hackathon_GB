@@ -1,10 +1,58 @@
-<div class="flex flex-col justify-center gap-y-4">
+<div class="flex flex-col justify-center gap-y-4 w-full mx-auto">
   <app-stepper [steps]="steps"></app-stepper>
-  <app-selection [images]="images_moodboard"></app-selection>
+  <div
+    class="flex items-center text-primary-500 font-bold hover:cursor-pointer"
+    (click)="backStep()"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      class="fill-primary-500"
+    >
+      <path
+        fill="currentColor"
+        d="m9.55 12l7.35 7.35q.375.375.363.875t-.388.875t-.875.375t-.875-.375l-7.7-7.675q-.3-.3-.45-.675t-.15-.75t.15-.75t.45-.675l7.7-7.7q.375-.375.888-.363t.887.388t.375.875t-.375.875z"
+      ></path></svg
+    >Retour
+  </div>
+  @if (current_step <=2){
+  <app-selection
+    [images]="step_images[current_step].images"
+    [preview]="step_images[current_step].preview"
+    [(selectedImg)]="images_selected"
+  ></app-selection>
+  <button
+    class="px-4 py-2 rounded-full font-bold text-white border-2 border-primary-500 bg-primary-500 transition-all ease-in-out duration-300 hover:bg-primary-600 w-fit mx-auto"
+    (click)="
+      nextStep();
+      current_step == 1 ? sendMoodboardPaths() : sendUserChoicePaths()
+    "
+  >
+    Suivant
+  </button>
+  } @else if (current_step == 3){
+  <app-validation [image]="images_selected[0]"></app-validation>
   <button
     class="px-4 py-2 rounded-full font-bold text-white border-2 border-primary-500 bg-primary-500 transition-all ease-in-out duration-300 hover:bg-primary-600 w-fit mx-auto"
     (click)="nextStep()"
   >
     Suivant
   </button>
+
+  }@else {
+  <div class="flex justify-evenly">
+    <app-login-form></app-login-form>
+    <!-- <div class="w-px bg-gray-200"></div> -->
+
+    <app-register-form></app-register-form>
+  </div>
+  <button
+    class="px-4 py-2 rounded-full font-bold text-white border-2 border-primary-500 bg-primary-500 transition-all ease-in-out duration-300 hover:bg-primary-600 w-fit mx-auto"
+    (click)="nextStep()"
+  >
+    Suivant
+  </button>
+  }
 </div>

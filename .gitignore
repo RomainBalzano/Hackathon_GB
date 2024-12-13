@@ -43,3 +43,8 @@ Thumbs.db
 .history
 .vscode
 .venv
+
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
