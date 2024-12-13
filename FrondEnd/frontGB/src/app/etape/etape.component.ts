@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StepperComponent } from '../stepper/stepper.component';
 import { SelectionComponent } from '../selection/selection.component';
 import { PathService } from '../path-service.service';
@@ -21,20 +21,16 @@ import { RegisterFormComponent } from '../register-form/register-form.component'
   templateUrl: './etape.component.html',
   styleUrl: './etape.component.css',
 })
-export class EtapeComponent {
+export class EtapeComponent implements OnInit {
   steps = [
     { title: 'Sélection moodboard', done: false, current: true },
     { title: 'Sélection thème', done: false, current: false },
-    { title: 'Sélection navigation', done: false, current: false },
     { title: 'Finalisation', done: false, current: false },
     { title: 'Connexion', done: false, current: false },
   ];
 
   // lot d'image à load
-  images_moodboard = [
-    'original-59389f72068ff21d26cb3499ee205d64.jpg',
-    'original-3993be19e330359a36fe1c51df745f25.jpg',
-  ];
+  images_moodboard = new Array();
 
   images_theme = [''];
 
@@ -50,6 +46,12 @@ export class EtapeComponent {
   ];
 
   current_step = 0;
+
+  ngOnInit() {
+    for (let i = 1; i < 28; i++) {
+      this.images_moodboard.push('mobbin_save/' + i + '.png');
+    }
+  }
 
   constructor(private pathService: PathService) {}
 

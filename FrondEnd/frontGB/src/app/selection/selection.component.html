@@ -1,17 +1,16 @@
 <div class="flex">
   <!-- Proposition -->
-  <div class="flex justify-center w-full justify-between">
+  <div class="flex flex-wrap">
     @for (img of images; track img) {
     <app-card
       [image]="img"
       (click)="onClick(img)"
-      class="hover:cursor-pointer m-1 border-2 {{
+      class="hover:cursor-pointer m-1 border-2 w-1/3 {{
         isSelected(img) ? ' border-primary-500' : 'border-transparent'
       }}"
     ></app-card>
     }
   </div>
-  <div>{{ selectedImg }}</div>
   <!-- preview -->
   @if(preview){
   <div>
