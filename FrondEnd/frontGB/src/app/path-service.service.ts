@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root', // Vérifiez bien que le service est enregistré ici
 })
 export class PathService {
-  private apiUrl = 'http://localhost:5000/Image'; // URL de votre backend Flask
+  private apiUrl = 'http://127.0.0.1:5000/find_similar'; // URL de votre backend Flask
 
   constructor(private http: HttpClient) {}
 
-  sendPaths(paths: string[]): Observable<any> {
-    return this.http.post(this.apiUrl, { paths });
+  sendPrefilledPaths(paths: string[]): Observable<any> {
+    return this.http.post(this.apiUrl, { mobbin_names: paths });
   }
 }
