@@ -25,6 +25,7 @@ import { CardComponent } from '../card/card.component';
   styleUrl: './etape.component.css',
 })
 export class EtapeComponent implements OnInit {
+  gbRespond : string[] = [];
   steps = [
     { title: 'Sélection moodboard', done: false, current: true },
     { title: 'Sélection thème', done: false, current: false },
@@ -61,6 +62,8 @@ export class EtapeComponent implements OnInit {
   ];
 
   current_step = 0;
+
+
 
   constructor(private pathService: PathService) {}
 
@@ -117,8 +120,10 @@ export class EtapeComponent implements OnInit {
     this.pathService.sendPrefilledPaths(this.images_selected.map(image => image.replace('mobbin_save/', ''))).subscribe(
       (response: { gb_images: string[] }) => {
         console.log('Réponse du serveur Flask :', response.gb_images);
-        this.step_images[1].images = response.gb_images;
+        this.gbRespond = response.gb_images;
+
         this.images_selected = [];
+        console.log(this.images_selected);
       },
       (error) => {
         console.error("Erreur lors de l'envoi des données :", error);
