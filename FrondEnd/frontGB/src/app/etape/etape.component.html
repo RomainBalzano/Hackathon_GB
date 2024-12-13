@@ -1,6 +1,6 @@
 <div class="flex flex-col justify-center gap-y-4 md:gap-y-8 mx-auto">
   <!-- <app-stepper [steps]="steps"></app-stepper> -->
-  <div class="flex flex-col text-center gap-y-4 py-2">
+  <div class="flex flex-col text-center gap-y-4 pt-2">
     <h1 class="font-bold text-2xl text-gray-700">
       {{ indication[current_step].titre }}
     </h1>
@@ -8,7 +8,9 @@
   </div>
   <div class="flex w-full justify-between">
     <div
-      class="flex items-center text-primary-500 font-bold hover:cursor-pointer"
+      class="flex items-center text-primary-500 font-bold hover:cursor-pointer {{
+        current_step == 0 ? 'opacity-0 hover:cursor-default' : ''
+      }}"
       (click)="backStep()"
     >
       <svg
@@ -25,11 +27,12 @@
       >Retour
     </div>
     <button
-      class="px-4 py-2 rounded-full font-bold text-white border-2 border-primary-500 bg-primary-500 transition-all ease-in-out duration-300 hover:bg-primary-600 w-fit"
+      class="px-4 py-2 rounded-full font-bold text-white border-2 border-primary-500 bg-primary-500 transition-all ease-in-out duration-300 hover:bg-primary-600 w-fit disabled:bg-gray-500 disabled:border-gray-500"
       (click)="
         nextStep();
         current_step == 1 ? sendMoodboardPaths() : sendUserChoicePaths()
       "
+      [disabled]="images_selected.length < 3"
     >
       Suivant
     </button>
