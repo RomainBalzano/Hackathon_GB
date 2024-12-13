@@ -4,6 +4,8 @@ import { SelectionComponent } from '../selection/selection.component';
 import { PathService } from '../path-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ValidationComponent } from '../validation/validation.component';
+import { LoginFormComponent } from '../login-form/login-form.component';
+import { RegisterFormComponent } from '../register-form/register-form.component';
 
 @Component({
   selector: 'app-etape',
@@ -13,6 +15,8 @@ import { ValidationComponent } from '../validation/validation.component';
     SelectionComponent,
     HttpClientModule,
     ValidationComponent,
+    LoginFormComponent,
+    RegisterFormComponent,
   ],
   templateUrl: './etape.component.html',
   styleUrl: './etape.component.css',

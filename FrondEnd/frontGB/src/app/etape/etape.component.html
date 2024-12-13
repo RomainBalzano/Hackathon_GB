@@ -17,11 +17,25 @@
   </button>
   } @else if (current_step == 3){
   <app-validation [image]="images_selected[0]"></app-validation>
-
   <button
     class="px-4 py-2 rounded-full font-bold text-white border-2 border-primary-500 bg-primary-500 transition-all ease-in-out duration-300 hover:bg-primary-600 w-fit mx-auto"
     (click)="nextStep()"
   >
-    Suivant</button
-  >}
+    Suivant
+  </button>
+
+  }@else {
+  <div class="flex justify-around">
+    <app-login-form></app-login-form>
+    <div class="w-px bg-gray-200"></div>
+
+    <app-register-form></app-register-form>
+  </div>
+  <button
+    class="px-4 py-2 rounded-full font-bold text-white border-2 border-primary-500 bg-primary-500 transition-all ease-in-out duration-300 hover:bg-primary-600 w-fit mx-auto"
+    (click)="nextStep()"
+  >
+    Suivant
+  </button>
+  }
 </div>
