@@ -42,7 +42,7 @@ def image_to_base64(image_path):
         return None
 
 # Chemin vers l'image
-image_path = r"C:\Users\ulwar\Desktop\webp\booking_231_floatingtabbar_withmenu@2x.webp"
+image_path = r"C:\Users\Ulwar\Desktop\Hackathon_GB\images_script\images\mobbin_save\Brilliant Android 138.png"
 
 # Encodage de l'image en Base64
 base64_image = image_to_base64(image_path)
@@ -53,20 +53,11 @@ if base64_image:
 
     # Préparer le prompt
     prompt = (
-        "You are an agent specialized in tagging images of app design components, user interface elements, "
-        "or design layouts with relevant keywords that could be used to search for these items on a marketplace "
-        "or design platform. You will be provided with an image and the title of the design element or component "
-        "depicted in the image, and your goal is to extract keywords for only the element specified. "
-        "Keywords should be concise, relevant to app design, and in lowercase. "
-        "Type : booking, events, newspaper, restaurant, buildyourown, faith, nonprofit, schools, buildyourownshop, grocery, onlinecourses, services, contentcreator, internalcom, tourism, ecommerce, localdelivery, radiostation. "
-        "Design trend e.g., 'minimalist', 'modern', 'retro', 'material design'. "
-        "Dominant interface colors e.g., 'blue', 'white', 'dark mode', 'pastel','green','red','brown','orange','grey','pink'. "
-        "Navigation element positioning e.g., 'top bar', 'side bar', 'bottom bar', 'top navigation', 'side navigation', 'bottom navigation', 'hamburger menu', 'side drawer','banner'.\n\n"
-        "Keywords should be concise, relevant to app design, and in lowercase."
-
+        "You are an agent specialized in tagging images of app design components, user interface elements, or design layouts with relevant keywords. Your task is to focus exclusively on the types of keywords explicitly listed in the examples provided after e.g. in this prompt. You will be provided with an image and the title of the design element or component depicted in the image, and your goal is to extract only the relevant keywords as specified."
     )
 
-    file_path = r"C:\Users\ulwar\Desktop\hac\Hackathon_GB\Ia\apikey.txt"
+    #file_path = r"C:\Users\ulwar\Desktop\hac\Hackathon_GB\Ia\apikey.txt"
+    file_path = r"C:\Users\Ulwar\Desktop\Hackathon_GB\Ia\apikey.txt"
     api_key = load_api_key(file_path)
 
     if api_key:
@@ -84,7 +75,7 @@ if base64_image:
                 ],
             }
         ],
-        max_tokens=30,
+        max_tokens=300,
     )
 
     # Gérer la réponse
