@@ -53,6 +53,17 @@ export class EtapeComponent {
 
   constructor(private pathService: PathService) {}
 
+  backStep() {
+    this.steps[this.current_step].current = false;
+    // this.steps[this.current_step].done = false;
+
+    if (this.current_step > 0) {
+      this.current_step -= 1;
+      this.steps[this.current_step].current = true;
+      this.steps[this.current_step].done = false;
+    }
+  }
+
   nextStep() {
     this.steps[this.current_step].current = false;
     this.steps[this.current_step].done = true;
