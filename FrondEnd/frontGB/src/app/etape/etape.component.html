@@ -32,7 +32,7 @@
         nextStep();
         current_step == 1 ? sendMoodboardPaths() : sendUserChoicePaths()
       "
-      [disabled]="images_selected.length < 3"
+      [disabled]="current_step == 0 && images_selected.length < 3"
     >
       Suivant
     </button>
