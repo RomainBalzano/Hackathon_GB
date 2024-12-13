@@ -1,20 +1,20 @@
 <div class="flex">
   <!-- Proposition -->
-  <div class="flex flex-wrap">
+  <div class="flex flex-wrap w-full justify-between items-center">
     @for (img of images; track img) {
     <app-card
       [image]="img"
       (click)="onClick(img)"
-      class="hover:cursor-pointer m-1 border-2 w-1/3 {{
+      class="hover:cursor-pointer m-1 border-2 w-full md:w-1/3 lg:w-1/4 {{
         isSelected(img) ? ' border-primary-500' : 'border-transparent'
       }}"
     ></app-card>
     }
   </div>
   <!-- preview -->
-  @if(preview){
+  <!-- @if(preview){
   <div>
     <app-card [image]="selectedImg[selectedImg.length - 1]"></app-card>
   </div>
-  }
+  } -->
 </div>
