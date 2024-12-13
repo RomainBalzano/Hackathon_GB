@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ValidationComponent } from '../validation/validation.component';
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { RegisterFormComponent } from '../register-form/register-form.component';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-etape',
@@ -17,6 +18,8 @@ import { RegisterFormComponent } from '../register-form/register-form.component'
     ValidationComponent,
     LoginFormComponent,
     RegisterFormComponent,
+    CardComponent,
+    CardComponent,
   ],
   templateUrl: './etape.component.html',
   styleUrl: './etape.component.css',
