@@ -36,7 +36,24 @@ export class EtapeComponent implements OnInit {
   images_theme: string[] = [''];
   images_nav: string[] = ['logo.png'];
   images_selected: string[] = [];
-
+  indication = [
+    {
+      titre: 'Sélectionner des images qui vous inspirent',
+      text: 'Faîtes votre sélection et nous nous chargeons de trouver le thème GoodBarber adapté à vos envies.',
+    },
+    {
+      titre: 'Thème correspondant à votre sélection',
+      text: "Ce thème est celui qui s'approche le plus de ce que vous souhaitez, s'il ne vous convient pas, retournez à l'étape précédente et refaite votre sélection !",
+    },
+    {
+      titre: 'Donnez un nom à votre application',
+      text: "Pour finir le processus, il ne vous reste plus qu'à donner un nom à votre application !",
+    },
+    {
+      titre: 'Connectez-vous pour valider le processus',
+      text: 'Une fois connecté, votre application sera officiellement créée',
+    },
+  ];
   step_images = [
     { images: this.images_moodboard, preview: false },
     { images: this.images_theme, preview: true },
