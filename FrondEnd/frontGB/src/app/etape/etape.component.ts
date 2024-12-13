@@ -3,11 +3,17 @@ import { StepperComponent } from '../stepper/stepper.component';
 import { SelectionComponent } from '../selection/selection.component';
 import { PathService } from '../path-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ValidationComponent } from '../validation/validation.component';
 
 @Component({
   selector: 'app-etape',
   standalone: true,
-  imports: [StepperComponent, SelectionComponent, HttpClientModule],
+  imports: [
+    StepperComponent,
+    SelectionComponent,
+    HttpClientModule,
+    ValidationComponent,
+  ],
   templateUrl: './etape.component.html',
   styleUrl: './etape.component.css',
 })
@@ -16,7 +22,7 @@ export class EtapeComponent {
     { title: 'Sélection moodboard', done: false, current: true },
     { title: 'Sélection thème', done: false, current: false },
     { title: 'Sélection navigation', done: false, current: false },
-    { title: 'Validation', done: false, current: false },
+    { title: 'Finalisation', done: false, current: false },
     { title: 'Connexion', done: false, current: false },
   ];
 
@@ -30,6 +36,8 @@ export class EtapeComponent {
 
   images_nav = ['logo.png'];
 
+  images_selected = new Array();
+
   // image à afficher en fonction des steps
   step_images = [
     { images: this.images_moodboard, preview: false },
@@ -38,8 +46,6 @@ export class EtapeComponent {
   ];
 
   current_step = 0;
-
-  images_selected = new Array();
 
   constructor(private pathService: PathService) {}
 

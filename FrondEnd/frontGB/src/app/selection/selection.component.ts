@@ -17,6 +17,7 @@ export class SelectionComponent {
   @Output() selectedImgChange = new EventEmitter<string[]>();
 
   @Input() preview = false;
+  // @Input() valid = false;
 
   // liste des images à afficher
   @Input() images = [''];

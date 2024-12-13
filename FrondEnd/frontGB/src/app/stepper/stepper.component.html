@@ -1,6 +1,6 @@
 <div class="flex items-end max-w-screen-lg mx-auto w-5/6">
   @for (step of steps; track step; let last = $last) {
-  <div class="w-full">
+  <div class="{{ last ? '' : 'w-full' }}">
     <!-- Step title -->
     <h6
       class="text-sm font-bold mb-2 {{
@@ -11,7 +11,7 @@
     </h6>
 
     <!-- Step content -->
-    <div class="flex items-center w-full">
+    <div class="flex items-center {{ last ? '' : 'w-full' }}">
       <!-- Step circle -->
       <div
         class="w-7 h-7 z-50 shrink-0 mx-[-1px] border-2 {{
