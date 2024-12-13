@@ -1,5 +1,11 @@
-<div class="flex flex-col justify-center gap-y-4 mx-auto">
+<div class="flex flex-col justify-center gap-y-4 md:gap-y-8 mx-auto">
   <!-- <app-stepper [steps]="steps"></app-stepper> -->
+  <div class="flex flex-col text-center gap-y-4 py-2">
+    <h1 class="font-bold text-2xl text-gray-700">
+      {{ indication[current_step].titre }}
+    </h1>
+    <p>{{ indication[current_step].text }}</p>
+  </div>
   <div class="flex w-full justify-between">
     <div
       class="flex items-center text-primary-500 font-bold hover:cursor-pointer"
@@ -28,7 +34,7 @@
       Suivant
     </button>
   </div>
-  @if (current_step <=1){
+  @if (current_step <1){
   <app-selection
     [images]="step_images[current_step].images"
     [preview]="step_images[current_step].preview"
@@ -43,6 +49,8 @@
   >
     Suivant
   </button> -->
+  } @else if (current_step == 1){
+  <app-card [image]="images_selected[0]" class="w-fit mx-auto"></app-card>
   } @else if (current_step == 2){
   <app-validation [image]="images_selected[0]"></app-validation>
   <!-- <button

@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ValidationComponent } from '../validation/validation.component';
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { RegisterFormComponent } from '../register-form/register-form.component';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-etape',
@@ -17,6 +18,8 @@ import { RegisterFormComponent } from '../register-form/register-form.component'
     ValidationComponent,
     LoginFormComponent,
     RegisterFormComponent,
+    CardComponent,
+    CardComponent,
   ],
   templateUrl: './etape.component.html',
   styleUrl: './etape.component.css',
@@ -27,6 +30,25 @@ export class EtapeComponent implements OnInit {
     { title: 'Sélection thème', done: false, current: false },
     { title: 'Finalisation', done: false, current: false },
     { title: 'Connexion', done: false, current: false },
+  ];
+
+  indication = [
+    {
+      titre: 'Sélectionner des images qui vous inspirent',
+      text: 'Faîtes votre sélection et nous nous chargeons de trouver le thème GoodBarber adapté à vos envies.',
+    },
+    {
+      titre: 'Thème correspondant à votre sélection',
+      text: "Ce thème est celui qui s'approche le plus de ce que vous souhaitez, s'il ne vous convient pas, retournez à l'étape précédente et refaite votre sélection !",
+    },
+    {
+      titre: 'Donnez un nom à votre application',
+      text: "Pour finir le processus, il ne vous reste plus qu'à donner un nom à votre application !",
+    },
+    {
+      titre: 'Connectez-vous pour valider le processus',
+      text: 'Une fois connecté, votre application sera officiellement créée',
+    },
   ];
 
   // lot d'image à load
@@ -88,7 +110,7 @@ export class EtapeComponent implements OnInit {
       (response) => {
         console.log('Réponse du serveur Flask :', response.data.paths);
         this.step_images[1].images = response.data.paths;
-        this.images_selected = [];
+        // this.images_selected = [];
       },
       (error) => {
         console.error("Erreur lors de l'envoi des données :", error);
